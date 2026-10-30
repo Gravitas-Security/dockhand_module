@@ -7,6 +7,8 @@ resource "dockhand_git_stack" "published_stacks" {
   compose_path  = "${basename(var.published_stack_files_path)}/${each.value}"
   env_vars_json = local.stack_env_vars_json
 
+  secret_provider_id = var.secret_provider_id
+
   auto_update_enabled = true
   auto_update_cron    = "* * * * *"
   deploy_now          = true
@@ -23,6 +25,8 @@ resource "dockhand_git_stack" "unpublished_stacks" {
   repository_id = var.repository_id
   compose_path  = "${basename(var.unpublished_stack_files_path)}/${each.value}"
   env_vars_json = local.stack_env_vars_json
+
+  secret_provider_id = var.secret_provider_id
 
   auto_update_enabled = true
   auto_update_cron    = "* * * * *"

@@ -8,7 +8,7 @@ Terraform module that deploys Docker Compose stacks from a Git repository as [Do
 - Published stacks also get a Cloudflare Zero Trust Access application at `<name>.<cf_domain>`, all sharing one Access policy.
 - Each stack lives in its own directory because Dockhand redeploys a git stack whenever anything in its compose file's directory changes.
 - Stacks auto-update from Git every minute and repull images on deploy.
-- Secrets come from a Dockhand secret provider (for example Doppler) bound to each stack in Dockhand. The module sets `DOCKHAND_SECRET_SELECTOR` on every stack, which Dockhand requires before it pulls from a bulk provider. Compose files reference secrets as `${VAR}`.
+- Secrets come from a Dockhand secret provider (for example Doppler) bound to every stack via `secret_provider_id`, or per stack in Dockhand. The module sets `DOCKHAND_SECRET_SELECTOR` on every stack, which Dockhand requires before it pulls from a bulk provider. Compose files reference secrets as `${VAR}`.
 
 ## Repository layout
 
@@ -36,6 +36,8 @@ module "docker_stacks" {
 
   cf_domain       = "example.com"
   cf_account_name = "Example Account"
+
+  secret_provider_id = 1 # optional: Dockhand secret provider to bind
 }
 ```
 
@@ -51,6 +53,7 @@ The calling configuration configures the `dockhand` and `cloudflare` providers.
 | `repository_id` | Dockhand git repository ID that holds the stack files |
 | `cf_domain` | Cloudflare zone published stacks are exposed under |
 | `cf_account_name` | Cloudflare account name |
+| `secret_provider_id` | Dockhand secret provider ID bound to every stack. Default `null` leaves bindings unchanged |
 
 ## Outputs
 
