@@ -4,7 +4,7 @@ terraform {
   required_providers {
     dockhand = {
       source  = "kalebharrison/dockhand"
-      version = "~> 0.1.92"
+      version = "~> 0.1.93"
     }
     cloudflare = {
       source  = "cloudflare/cloudflare"

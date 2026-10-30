@@ -29,3 +29,8 @@ variable "cf_account_name" {
   type        = string
 }
 
+variable "secret_provider_id" {
+  description = "Dockhand secret provider ID to bind to every stack. null leaves each stack's existing binding unchanged."
+  type        = number
+  default     = null
+}
