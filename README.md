@@ -63,4 +63,4 @@ The calling configuration configures the `dockhand` and `cloudflare` providers.
 | `unpublished_stack_definitions` | Unpublished stack name => compose file |
 | `cloudflare_access_application` | Access applications |
 | `cloudflare_access_policy` | Access policy |
-| `stack_public_attributes` | Per-stack ID, compose path and sync status |
+| `stack_public_attributes` | Per-stack ID, compose path and repository |

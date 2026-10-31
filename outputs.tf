@@ -19,6 +19,6 @@ output "cloudflare_access_policy" {
 }
 
 output "stack_public_attributes" {
-  description = "Per-stack ID, compose path and sync status (no secrets)"
+  description = "Per-stack ID, compose path and repository (no secrets)"
   value       = local.stack_public_attrs
 }
