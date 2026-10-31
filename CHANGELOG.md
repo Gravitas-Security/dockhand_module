@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/Gravitas-Security/dockhand_module/compare/v1.1.0...v1.1.1) (2026-10-31)
+
+
+### Bug Fixes
+
+* stop exposing sync_status and last_sync in stack outputs ([#4](https://github.com/Gravitas-Security/dockhand_module/issues/4)) ([d2515e5](https://github.com/Gravitas-Security/dockhand_module/commit/d2515e5c371a93d7df65f52d61da49010479b62d))
+
 ## 1.1.0 (2026-10-30)
 
 
