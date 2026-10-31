@@ -24,8 +24,8 @@ locals {
       compose_path        = s.compose_path
       repository_name     = s.repository_name
       auto_update_enabled = s.auto_update_enabled
-      sync_status         = s.sync_status
-      last_sync           = s.last_sync
+      # sync_status and last_sync are left out: Dockhand updates them on every sync,
+      # so exposing them made every plan show output changes.
     }
   }
 }
