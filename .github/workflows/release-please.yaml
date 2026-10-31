@@ -19,13 +19,15 @@ jobs:
           release-type: terraform-module # Multiple release types are supported
           default-branch: main
 
-      # Merge the release PR as soon as it is opened or updated. Needs the
-      # GitHub Actions app on the main ruleset's bypass list.
+      # Merge the release PR as soon as it is opened or updated. GITHUB_TOKEN can't do it:
+      # the main ruleset requires a review and GitHub doesn't allow the GitHub Actions app
+      # on an org repo's bypass list. RELEASE_MERGE_TOKEN is a fine-grained token (this repo,
+      # contents + pull requests write) from an admin, who is on the bypass list.
       - name: Merge release PR
         id: merge
         if: steps.release.outputs.pr
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.RELEASE_MERGE_TOKEN }}
           PR_NUMBER: ${{ fromJSON(steps.release.outputs.pr).number }}
         run: gh pr merge "$PR_NUMBER" --squash --admin --repo "$GITHUB_REPOSITORY"
 
